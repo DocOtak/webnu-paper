@@ -17,9 +17,17 @@
 \affil[3]{Hawaii Pacific University 45-045 Kamehameha Hwy, Kaneohe, HI 96744}
 \renewcommand\Affilfont{\itshape\tiny}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Is tracked with version   %
+% control software, please  %
+% use one sentence per line %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 \maketitle
 \begin{abstract}
+  This is just the AGU submitted abstract... fix when done with paper.
+
   We present a real-time, interactive, web-based visualization of the Earth's antineutrino flux from both natural and man-made sources.
   The initial phase of development displays crust layer thicknesses, surface heat flux due to heat-producing elements, uranium, thorium and potassium, and the surface geo-neutrino flux from these elements in the mantle and crust.
   It permits users to define heat-producing element concentrations in the mantle, including a global constraint on the radiogenic power and the Th/U and K/U ratios of the bulk silicate Earth.
@@ -30,8 +38,58 @@
 \clearpage
 
 \section{Introduction}
+Quick discussion on composition of earth problem and geonu role.
+
+Talk about neutrino models...
+
+Issues faced with the overlap of model and measurement uncertanty.
+
 \section{Methods}
-%\bibliographystyle{plain}
-%\bibliography{refs}
+Data sources:
+  \begin{itemize}
+    \item Dye \cite{Dye2012}
+    \item Jocher (reactor flux)
+    \item Huang et. al. 2013 (Neutrino fluxes)?
+    \item PREM
+    \item CRUST 2.0
+  \end{itemize}
+
+  Data converted to web browser consumable format (JSON)
+
+  Internal data model?
+
+  Event based nature of web browsers and what happens when a user moves a control
+
+  The maths done when user inputs.
+
+Technologies used:
+\begin{itemize}
+  \item Languages used:
+  \begin{itemize}
+    \item Python
+    \item JavaScript
+  \end{itemize}
+  \item  Libraries Used
+  \begin{itemize}
+    \item D3
+    \item JQuery
+    \item Bootstrap
+  \end{itemize}
+  \item Modern Web Technologies:
+  \begin{itemize}
+    \item SVG (Color bars, map overlays)
+    \item HTML5 Canvas (Actual Map)
+  \end{itemize}
+\end{itemize}
+\section{Discussion}
+Discuss potential researcher benifit.
+
+Discuss potential education benifit.
+
+Discuss future (obligatory additional research required)
+\section{Acknowledgments}
+HPU, CIDER
+\bibliographystyle{plain}
+\bibliography{refs}
 \end{document}
 
