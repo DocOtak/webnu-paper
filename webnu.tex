@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{setspace}
+\usepackage{hyperref}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{authblk}
 
@@ -58,24 +59,78 @@ The model includes crust and reactor sources and allows for the display of sever
 It is our hope it becomes a useful tool for research as well as education.
 
 \section{Methods}
-Data sources:
-  \begin{itemize}
-    \item Dye \cite{Dye2012}
-    \item Jocher (reactor flux)
-    \item Huang et. al. 2013 (Neutrino fluxes)?
-    \item PREM
-    \item CRUST 2.0
-  \end{itemize}
+This section will discuss methods in several parts.
+Data sources include the mantle and crust input models as well as some precomputed data.
+The technologies will contain the libraries and more recent improvements in web browsers making the visualizations possible.
+Finally the data model used on the user agents as well as how user input is processed will be dicussed.
 
-  Data converted to web browser consumable format (JSON)
+\subsection{Data sources}
+\subsubsection{PREM}
+The base mantle model is the preliminary reference earth model (PREM), a siesmological model of the entire earth.
+PREM is divided into 200km thick concentric layers with additional breaks for major discontinuities within the mnatle.
+Only the silicate earth portions of PREM are used in our model, the core is assumed to contain negligible radiogenic elements.
+PREM is used for all mantle calculations, all layers between the LID and the core mantle boundary allow for user input.
 
-  Internal data model?
+TODO Needs Citations for PREM
+\subsubsection{CRUST 2.0}
+The base crust model used is CRUST 2.0.
+CRUST 2.0 is a 2 by 2 degree earth crust model further divided into 7 layers.
+Those 7 layers include surface ice, the liqud hydrosphere, soft and hard sediments, and an upper, middle and lower crusts.
+The model provided density and thickness which are both used to calculate mass.
+The mass, area, and ocean flags were precomputed and converted to a json format, to be described later.
 
-  Event based nature of web browsers and what happens when a user moves a control
+TODO Needs citations for CRUST2.0
+\subsubsection{Precomputed Neutrino Fluxes}
+TODO!!!
 
-  The maths done when user inputs.
+The data are from Huang et. al.
+Were provided in 1 by 1 degree bins, used area weighted mean to convert to 2 by 2 degree bins
+Were converted to TNU for each element (K, Th, and U)
+Converted to json
 
-Technologies used:
+\subsubsection{Reactor Data}
+TODO!!!
+
+Data are from Jocher,
+Were provided in 1 by 1 degree bins, used area weighted mean to convert to 2 by 2 degree bins
+converted to json
+
+\subsection{Web Technology}
+The platform independet nature of web browsers makes it ideal for developing websites which go beyond simple static content, approaching the ability to act as full applications.
+Several technologies make interactive web based applications possible, to name a few: ECMAScript, CSS, HTML5 Canvas, SVG, and HTML (HTML5 specifically).
+HTML is the basic document used by web browsers for rendering, it contains information on what other content (scripts, images, styles) should be loaded, and usually has the majority of the text content for a web page.
+Cascading Style Sheets (CSS) contain layout information on how the HTML should be rendered and layed out in a web browser.
+Scalabale Vector Graphics (SVG) provide a cross platform format for displaying vector graphics.
+HTML5 Canvas is a recent addition to the HTML standard which allows for browser based scripts to draw raster graphics to a defined area on the webpage.
+Finally, ECMAScript 5, commonly known as JavaScript (JS) or JScript, allows for computation to be performed within the web browser as well as interact with elements on a web page.
+In addition to the browser based technologies, preprocessing of data was performed using the Python scripting language.
+The specifics of how each of these technologies was used will be discussed in this section.
+
+\subsubsection{Python}
+Python has grown in popularity within many scientific communities recently, largly due to ease of use and the many scientific libraries available for it.
+It is an interpreted, object orientated scripting language with a MatLab like syntax.
+Python was used to prepare input data such as the crust neutrino fluxes and signals.
+It was used to convert the largly tabular data into the JSON format which the browser based JS interpreter can understand.
+Initial implimentations of geoneutrinos.org relied entirely on real time server side processing done using python.
+However, it was found python was not fast enough to provide the impression of responsiveness needed for real time interaction.
+The computations were shifted to the client side (web browser) to reduce both server load and to provide more real time visualization computations.
+
+\subsubsection{HTML5 and CSS}
+Talk about HTML, the DOM, what CSS does with it.
+Talk about twitter bootstrap as the UI layout library and what we get with it (support for multiple screen widths, as small as cell phones, for almost free)
+
+\subsubsection{JavaScript and JavaScript Libraries}
+Talk about how JS interacts with the DOM
+Talk about what we get from the D3 library
+Talk about what we get with jQuery
+
+\subsubsection{Canvas and SVG}
+Talk about how we display the map
+Talk about how we display the color bar
+Talk about how we display the continents and plate boundary overlays.
+
+
+TODO: Remove this list, only here as a reminder of what to write about.
 \begin{itemize}
   \item Languages used:
   \begin{itemize}
@@ -94,12 +149,34 @@ Technologies used:
     \item HTML5 Canvas (Actual Map)
   \end{itemize}
 \end{itemize}
+
+\subsection{Data Model and User Input}
+Internal data model:
+
+What information is persisted and how.
+
+How JS handles numberic data
+
+How we use the JS objects to store things
+
+How we perform math on 2d arrays (not native to JavaScript)
+
+Event based nature of web browsers and what happens when a user moves a control
+
+The maths done when user inputs.
+
 \section{Discussion}
 Discuss potential researcher benifit.
 
 Discuss potential education benifit.
 
-Discuss future (obligatory additional research required)
+Discuss future (obligatory additional work required)
+\section{Source Code}
+The source for this document as well as the website it describes is freely available on GitHub.
+\begin{itemize}
+ \item Website: \url{https://github.com/docotak/geoneutrinos.org}
+ \item Document: TODO: push this to github
+\end{itemize}
 \section{Acknowledgments}
 HPU, CIDER
 \bibliographystyle{plain}
